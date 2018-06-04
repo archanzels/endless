@@ -13,5 +13,5 @@ public interface RequestService {
 
 	Request findOne(Integer id);
 	
-	List<Request> fetch(String group);
+
 }

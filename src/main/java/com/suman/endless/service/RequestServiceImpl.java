@@ -33,10 +33,4 @@ public class RequestServiceImpl implements RequestService {
 	public Request findOne(Integer id) {
 		return requestRepository.getOne(id);
 	}
-
-	@Override
-	public List<Request> fetch(String group) {
-		return requestRepository.fetchRequest(group);
-	}
-
 }
