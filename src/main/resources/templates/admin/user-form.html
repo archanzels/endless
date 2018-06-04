@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<form action="/save" th:object="${user}" method="POST">
+		<table>
+			<tr>
+				<td>First Name</td>
+				<td>Last Name</td>
+			</tr>
+			<tr>
+				<td><input type="text" th:field="*{firstName}"></td>
+				<td><input type="text" th:field="*{lastName}"></td>
+				<!-- <td><select th:field="*{userProfile.gender}">
+						<option
+							th:each="gender: ${T(com.suman.springdata.model.UserProfile.gender)}"></option>
+				</select></td> -->
+			</tr>
+		</table>
+		<input class="btn btn-primary btn-block" type="submit" value="Submit" />
+	</form>
+</body>
+</html>

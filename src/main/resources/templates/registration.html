@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Blood Bank : Registration</title>
+
+<!--WebJars  -->
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<!--Theme Style  -->
+<link rel="stylesheet"
+	th:href="@{/webjars/AdminLTE/2.4.3/dist/css/AdminLTE.min.css}" />
+</head>
+<body class="hold-transition register-page">
+	<div class="register-box">
+		<div class="register-logo">
+			<a th:href="@{/home}"><b>Hello Blood Donor</b></a>
+		</div>
+
+		<div class="register-box-body">
+			<p class="login-box-msg">Register a new membership</p>
+
+			<form th:action="@{/registration}" th:object="${user}" method="post">
+				<div class="form-group">
+					<input type="text" th:field="*{firstName}" placeholder="Name"
+						class="form-control" /> <label
+						th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+						class="validation-message"> </label>
+				</div>
+				<div class="form-group">
+					<input type="text" th:field="*{lastName}" placeholder="Last Name"
+						class="form-control" /> <label
+						th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+						class="validation-message"></label>
+				</div>
+
+				<!--Gender-->
+				<div class="form-group">
+					<input type="text" th:field="*{email}" placeholder="Email"
+						class="form-control" /> <label
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+						class="validation-message"></label>
+				</div>
+				<div class="form-group">
+					<input type="password" th:field="*{password}"
+						placeholder="Password" class="form-control" /> <label
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+						class="validation-message"></label>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block">Register
+					User</button>
+
+				<span th:utext="${successMsg}"></span>
+			</form>
+			<br />
+			<a th:href="@{/login}" class="text-center">I already have a membership</a>
+		</div>
+		
+	</div>
+	<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</body>
+</html>
