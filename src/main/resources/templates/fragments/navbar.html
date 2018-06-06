@@ -2,17 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/header ::header">
+
 </head>
 <body>
 	<div th:fragment="navbar">
-
-		<!-- 			<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-user"
-								th:utext="${userName}"></span> </a></li>
-						<li><a th:href="@{/logout}"><span
-								class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-					</ul> -->
-
 		<header class="main-header">
 			<!-- Logo -->
 			<a href="#" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -30,112 +23,8 @@
 
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-						<!-- Messages: style can be found in dropdown.less-->
-						<li class="dropdown messages-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="fa fa-envelope-o"></i> <span class="label label-success">4</span>
-						</a>
-							<ul class="dropdown-menu">
-								<li class="header">You have 4 messages</li>
-								<li>
-									<!-- inner menu: contains the actual data -->
-									<ul class="menu">
-										<li>
-											<!-- start message --> <a href="#">
-												<div class="pull-left">
-													<img src="../../dist/img/user3-128x128.jpg"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													Support Team <small><i class="fa fa-clock-o"></i> 5
-														mins</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a>
-										</li>
-										<!-- end message -->
-										<li><a href="#">
-												<div class="pull-left image">
-													<img
-														th:src="@{/webjars/AdminLTE/2.4.3/dist/img/user3-128x128.jpg}"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													AdminLTE Design Team <small><i
-														class="fa fa-clock-o"></i> 2 hours</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-										<li><a href="#">
-												<div class="pull-left">
-													<img src="../../dist/img/user4-128x128.jpg"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													Developers <small><i class="fa fa-clock-o"></i>
-														Today</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-										<li><a href="#">
-												<div class="pull-left">
-													<img src="../../dist/img/user3-128x128.jpg"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													Sales Department <small><i class="fa fa-clock-o"></i>
-														Yesterday</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-										<li><a href="#">
-												<div class="pull-left">
-													<img src="../../dist/img/user4-128x128.jpg"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													Reviewers <small><i class="fa fa-clock-o"></i> 2
-														days</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-									</ul>
-								</li>
-								<li class="footer"><a href="#">See All Messages</a></li>
-							</ul></li>
-						<!-- Notifications: style can be found in dropdown.less -->
-						<li class="dropdown notifications-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
-						</a>
-							<ul class="dropdown-menu">
-								<li class="header">You have 10 notifications</li>
-								<li>
-									<!-- inner menu: contains the actual data -->
-									<ul class="menu">
-										<li><a href="#"> <i class="fa fa-users text-aqua"></i>
-												5 new members joined today
-										</a></li>
-										<li><a href="#"> <i class="fa fa-warning text-yellow"></i>
-												Very long description here that may not fit into the page
-												and may cause design problems
-										</a></li>
-										<li><a href="#"> <i class="fa fa-users text-red"></i>
-												5 new members joined
-										</a></li>
-										<li><a href="#"> <i
-												class="fa fa-shopping-cart text-green"></i> 25 sales made
-										</a></li>
-										<li><a href="#"> <i class="fa fa-user text-red"></i>
-												You changed your username
-										</a></li>
-									</ul>
-								</li>
-								<li class="footer"><a href="#">View all</a></li>
-							</ul></li>
-
 						<!-- Control Sidebar Toggle Button -->
-						<li><a th:href="@{/logout}">Sign Out <i
+						<li><a th:href="@{/logout}" id="sign_out">Sign Out <i
 								class="fas fa-sign-out-alt"></i></a></li>
 					</ul>
 				</div>
@@ -143,5 +32,32 @@
 		</header>
 	</div>
 
+	<!--Public Navbar  -->
+	<div th:fragment="public-navbar">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<img th:src="@{/img/logo.png}" alt="Logo" class="logo">
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a th:href="@{/home}">Home</a></li>
+						<li><a th:href="@{/why-donate}">Why donate blood?</a></li>
+						<li><a th:href="@{/who-can-donate}">Who can donate?</a></li>
+						<li><a th:href="@{/registration}">Become a donor</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a th:href="@{/login}"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
 </body>
 </html>

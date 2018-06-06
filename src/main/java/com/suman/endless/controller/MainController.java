@@ -1,5 +1,7 @@
 package com.suman.endless.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.suman.endless.model.Request;
 import com.suman.endless.model.User;
+import com.suman.endless.service.RequestService;
 
 @Controller
 public class MainController {
@@ -19,9 +23,23 @@ public class MainController {
 	@Autowired
 	private com.suman.endless.service.UserService userService;
 
+	@Autowired
+	private RequestService requestService;
+
 	@GetMapping({ "/", "/home" })
 	public ModelAndView index() {
-		return new ModelAndView("home");
+		List<Request> requests = requestService.findAll();
+		return new ModelAndView("home", "requests", requests);
+	}
+
+	@GetMapping("/why-donate")
+	public ModelAndView whyDonate() {
+		return new ModelAndView("why-donate");
+	}
+
+	@GetMapping("/who-can-donate")
+	public ModelAndView whoCanDonate() {
+		return new ModelAndView("who-can-donate");
 	}
 
 	@GetMapping({ "/login" })

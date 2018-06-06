@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:include="fragments/header ::header">
 </head>
 <body>
 	<aside class="main-sidebar" th:fragment="sidebar">
-		<!-- sidebar: style can be found in sidebar.less -->
 		<section class="sidebar">
 			<!-- Sidebar user panel -->
 			<div class="user-panel">
@@ -35,10 +35,15 @@
 			<ul class="sidebar-menu" data-widget="tree">
 				<li class="header">MAIN NAVIGATION</li>
 
-				<li><a th:href="@{/admin/all}"><i class="fas fa-users"></i>
-						<span>Users</span> <span class="pull-right-container"> <small
+				<!--All Users  -->
+
+				<li sec:authorize="hasAuthority('ADMIN')"><a
+					th:href="@{/admin/all}"><i class="fas fa-users"></i> <span>Users</span>
+						<span class="pull-right-container"> <small
 							class="label pull-right bg-green">new</small>
 					</span> </a></li>
+
+				<!--All Requests  -->
 				<li><a th:href="@{/request/all}"><i
 						class="fas fa-align-justify"></i> <span>Requests</span> <span
 						class="pull-right-container"> <small

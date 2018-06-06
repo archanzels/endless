@@ -37,9 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/login", "/registration", "/home", "/css/**", "/img/**").permitAll()
-				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated().and().csrf().disable()
-				.formLogin()
+		http.authorizeRequests()
+				.antMatchers("/", "/login", "/registration", "/home", "/why-donate", "/who-can-donate", "/css/**",
+						"/img/**")
+				.permitAll().antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated().and().csrf()
+				.disable().formLogin()
 				// .successHandler(customSuccessHandler)
 				.loginPage("/login").failureUrl("/login?error=true")
 				// Custom Success Handler to redirect user and admin to different pages

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Who can donate?</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--CSS for public pages -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}" />
+</head>
+
+<body>
+	<!--Public Navbar  -->
+	<div th:include="fragments/navbar::public-navbar"></div>
+
+	<div class="panel-group" id="accordion">
+		<div class="faqHeader">General questions</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle" data-toggle="collapse"
+						data-parent="#accordion" href="#collapseOne">Who can donate
+						blood?</a>
+				</h4>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<strong> Most people can give blood. You can give blood if
+						you:</strong>
+					<ul>
+						<li>are fit and healthy</li>
+						<li>weigh between 7 stone 12 lbs and 25 stone, or 50kg and
+							160kg</li>
+						<li>are aged between 17 and 66 (or 70 if you have given blood
+							before)</li>
+						<li>are over 70 and have given blood in the last two years</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle collapsed" data-toggle="collapse"
+						data-parent="#accordion" href="#collapseTen">How oftern can I
+						give blood?</a>
+				</h4>
+			</div>
+			<div id="collapseTen" class="panel-collapse collapse">
+				<div class="panel-body">Men can give blood every 12 weeks and
+					women can give blood every 16 weeks.</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle collapsed" data-toggle="collapse"
+						data-parent="#accordion" href="#collapseEleven">Common reasons
+						donors should check if they can give blood:</a>
+				</h4>
+			</div>
+			<div id="collapseEleven" class="panel-collapse collapse">
+				<div class="panel-body">
+					<ul>
+						<li>if you are receiving medical or hospital treatment</li>
+						<li>if you are taking medication</li>
+						<li>after having a tattoo or piercing</li>
+						<li>during and after pregnancy</li>
+						<li>if you feel ill</li>
+						<li>if you have cancer</li>
+						<li>after receiving blood,blood products or organs</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Footer  -->
+	<div th:include="fragments/footer::footer"></div>
+</body>
+</html>

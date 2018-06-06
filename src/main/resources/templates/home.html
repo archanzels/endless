@@ -2,43 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
+<title>Home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}" />
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--CSS for public pages -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}" />
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<img th:src="@{/img/logo.png}" alt="Logo" class="logo">
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Why donate blood?</a></li>
-					<li><a href="#">Who can donate?</a></li>
-					<li><a th:href="@{/registration}">Become a donor</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{/login}"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<!--Public Navbar  -->
+	<div th:include="fragments/navbar::public-navbar"></div>
 
+	<!--Carousel  -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
@@ -55,7 +36,9 @@
 			<div class="row">
 				<div class="col-sm-4 col-xs-6 tab"
 					style="background-color: #8e8e8e; color: white;">
-					<h3>Blood Donation News & Events</h3>
+					<div class="page-header">
+						<h3>Blood Donation News & Events</h3>
+					</div>
 					<ul style="text-align: left;">
 						<li><a
 							href="https://www.tapinto.net/towns/roxbury/sections/health-and-wellness/articles/red-cross-calls-for-summer-blood-donations-to-pre-15">Red
@@ -67,15 +50,32 @@
 					</ul>
 				</div>
 
-
+				<!--Blood Requests Tab  -->
 				<div class="col-sm-4 col-xs-6 tab"
 					style="background-color: #bf360c; color: white;">
-					<h3>Blood Requests</h3>
+					<div class="page-header">
+						<h3>Blood Requests</h3>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+							</tr>
+							<tr th:each="request : ${requests}">
+								<td th:text="${request.id}"></td>
+								<td th:text="${request.name}"></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 
 
 				<div class="col-sm-4 col-xs-12 tab">
 					<div class="container-fluid">
+						<div class="page-header">
+							<h3>Contact Us:</h3>
+						</div>
 						<form role="form" id="contact-form" class="contact-form">
 							<div class="row">
 								<div class="form-group">
@@ -106,8 +106,7 @@
 	</div>
 	<br>
 
-	<footer class="container-fluid text-center">
-		<p>Footer Text</p>
-	</footer>
+	<!--Footer  -->
+	<div th:include="fragments/footer::footer"></div>
 </body>
 </html>
