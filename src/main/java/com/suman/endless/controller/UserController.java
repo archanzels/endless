@@ -30,11 +30,15 @@ public class UserController {
 		return new ModelAndView("admin/all-user", "users", users);
 	}
 
-	@GetMapping("/update/{id}")
-	public ModelAndView editUser(@PathVariable("id") Integer id) {
+	@GetMapping(value = { "/update/{id}", "/update" })
+	public ModelAndView editUser(@PathVariable(name = "id", required = false) Integer id) {
 		ModelAndView mv = new ModelAndView();
-		User theUser = userRepository.getOne(id);
-		mv.addObject("user", theUser);
+		if (id != null) {
+			User theUser = userRepository.getOne(id);
+			mv.addObject("user", theUser);
+		} else {
+			mv.addObject("user", new User());
+		}
 		mv.setViewName("admin/user-form");
 		return mv;
 	}

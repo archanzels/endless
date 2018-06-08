@@ -19,9 +19,18 @@
 			<section class="content-header">
 				<h1>All Requests</h1>
 			</section>
-			<a th:href="@{/request/editRequest}" class="btn btn-primary a-btn-slide-text"> <span
-				class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span><strong>Add</strong></span>
-			</a>
+			<hr />
+			<div class="container-fluid">
+				<div class="page-header">
+					<a th:href="@{/request/editRequest}"
+						class="btn btn-primary a-btn-slide-text"> <span
+						class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span><strong>New</strong></span></a>
+					<a href="#" class="btn btn-primary a-btn-slide-text"> <span
+						class="glyphicon glyphicon-upload" aria-hidden="true"></span> <span><strong>Upload</strong></span></a>
+
+				</div>
+			</div>
+
 			<section class="content">
 				<table class="table table-bordered table-hover">
 					<tr>

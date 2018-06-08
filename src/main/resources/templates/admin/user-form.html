@@ -1,27 +1,73 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Title</title>
+
+<head th:include="fragments/header ::header">
+<title>Admin Page</title>
 </head>
+
 <body>
-	<form action="/save" th:object="${user}" method="POST">
-		<table>
-			<tr>
-				<td>First Name</td>
-				<td>Last Name</td>
-			</tr>
-			<tr>
-				<td><input type="text" th:field="*{firstName}"></td>
-				<td><input type="text" th:field="*{lastName}"></td>
-				<!-- <td><select th:field="*{userProfile.gender}">
-						<option
-							th:each="gender: ${T(com.suman.springdata.model.UserProfile.gender)}"></option>
-				</select></td> -->
-			</tr>
-		</table>
-		<input class="btn btn-primary btn-block" type="submit" value="Submit" />
-	</form>
+	<div class="wrapper">
+		<!--Navbar  -->
+		<div th:replace="fragments/navbar ::navbar"></div>
+
+		<!--Main Sidebar  -->
+		<div th:replace="fragments/sidebar ::sidebar"></div>
+
+		<!--Main Body  -->
+		<div class="content-wrapper">
+			<section class="content-header">
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="#">All User</a></li>
+					<li class="active">User Form</li>
+				</ol>
+			</section>
+
+			<!--Main Content  -->
+			<section class="content">
+				<div class="col-md-6">
+					<div class="box box-info">
+						<div class="box-header with-border">
+							<h3 class="box-title">User Form</h3>
+						</div>
+					</div>
+
+					<form class="form-horizontal" th:object="${user}">
+						<div class="box-body">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">First Name</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" th:field="*{firstName}"
+										placeholder="Firstname">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Last Name</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" th:field="*{lastName}"
+										placeholder="Lastname">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Email</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" th:field="*{email}"
+										placeholder="Email">
+								</div>
+							</div>
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-default">Cancel</button>
+							<button type="submit" class="btn btn-info pull-right">Update
+							</button>
+						</div>
+
+					</form>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div th:replace="fragments/footer ::footer"></div>
 </body>
 </html>
