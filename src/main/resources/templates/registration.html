@@ -4,6 +4,16 @@
 <head>
 <title>Blood Bank : Registration</title>
 
+<style>
+.validation-message {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+</style>
+
 <!--WebJars  -->
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
@@ -48,9 +58,22 @@
 						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
 						class="validation-message"></label>
 				</div>
+				<div class="form-group">
+					<select class="form-control" th:field="*{bgroup}">
+						<option value="A+">A+</option>
+						<option value="A-">A-</option>
+						<option value="B+">B+</option>
+						<option value="B-">B-</option>
+						<option value="AB+">AB+</option>
+						<option value="AB-">AB-</option>
+						<option value="O+">O+</option>
+						<option value="O-">O-</option>
+					</select>
+				</div>
+
 				<button type="submit" class="btn btn-primary btn-block">Register
 					User</button>
-				<br /> <span th:utext="${successMsg}"></span>
+				<br /> <span th:utext="${successMsg}" class="success"></span>
 			</form>
 			<br /> <a th:href="@{/login}" class="text-center">I already have
 				a membership</a>

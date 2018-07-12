@@ -29,20 +29,64 @@
 				<div class="col-md-6">
 					<div class="box box-info">
 						<div class="box-header with-border">
-							<h3 class="box-title">User Form</h3>
+							<h3 class="box-title">Blood Request Form</h3>
 						</div>
 					</div>
 
-					<form class="form-horizontal" th:object="${request}">
+					<form class="form-horizontal" th:object="${request}" method="post">
 						<div class="box-body">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">First Name</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" th:field="*{name}"
-										placeholder="Firstname">
+									<input type="text" class="form-control" th:field="*{name}">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Last Name</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" th:field="*{name}">
+								</div>
+							</div>
+
+							<!--Blood Group  -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Blood Group</label>
+								<div class="col-sm-9">
+									<select class="form-control" id="sel1" th:field="*{group}">
+										<option value="A+">A+</option>
+										<option value="A-">A-</option>
+										<option value="B+">B+</option>
+										<option value="B-">B-</option>
+										<option value="AB+">AB+</option>
+										<option value="AB-">AB-</option>
+										<option value="O+">O+</option>
+										<option value="O-">O-</option>
+									</select>
+								</div>
+							</div>
+							<!--Date  -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Required Date</label>
+								<div class='col-sm-9 input-group date' id='datetimepicker1'>
+									<input type='text' class="form-control" /> <span
+										class="input-group-addon"> <span
+										class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+
+							<!--Contact Address  -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Address</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control">
 								</div>
 							</div>
 						</div>
+
+						<!--Alert Message  -->
+						<div class="alert alert-danger">Please fill out all the fields.</div>
 						<div class="box-footer">
 							<button type="submit" class="btn btn-default">Cancel</button>
 							<button type="submit" class="btn btn-info pull-right">Update
@@ -55,5 +99,6 @@
 		</div>
 	</div>
 	<div th:replace="fragments/footer ::footer"></div>
+
 </body>
 </html>

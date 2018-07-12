@@ -6,42 +6,53 @@ import javax.persistence.*;
 @Table(name = "user_profiles")
 public class UserProfile {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private Gender gender;
+	private Gender gender;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+	@Column(name = "bgroup")
+	private String bgroup;
 
-    public UserProfile() {
-    }
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
-    public UserProfile(Gender gender, User user) {
-        this.gender = gender;
-        this.user = user;
-    }
+	public UserProfile() {
+	}
 
-    public Gender getGender() {
-        return gender;
-    }
+	public UserProfile(Gender gender, User user, String bgroup) {
+		this.gender = gender;
+		this.bgroup = bgroup;
+		this.user = user;
+	}
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+	public Gender getGender() {
+		return gender;
+	}
 
-    public User getUser() {
-        return user;
-    }
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public static enum Gender {
-        MALE,
-        FEMALE
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getBgroup() {
+		return bgroup;
+	}
+
+	public void setBgroup(String bgroup) {
+		this.bgroup = bgroup;
+	}
+
+	public static enum Gender {
+		MALE, FEMALE
+	}
 }

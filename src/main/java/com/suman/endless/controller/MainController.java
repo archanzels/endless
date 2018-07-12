@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.suman.endless.model.Message;
 import com.suman.endless.model.Request;
 import com.suman.endless.model.User;
 import com.suman.endless.service.RequestService;
@@ -29,6 +30,11 @@ public class MainController {
 	@GetMapping({ "/", "/home" })
 	public ModelAndView index() {
 		List<Request> requests = requestService.findAll();
+		/*
+		 * Message message = new Message(); ModelAndView mv = new ModelAndView();
+		 * mv.addObject(requests); mv.addObject(message); mv.setViewName("home"); return
+		 * mv;
+		 */
 		return new ModelAndView("home", "requests", requests);
 	}
 

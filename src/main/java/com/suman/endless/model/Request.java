@@ -19,11 +19,15 @@ public class Request {
 	@Column(name = "name")
 	public String name;
 
+	@Column(name = "bgroup")
+	public String group;
+
 	public Request() {
 	}
 
-	public Request(String name) {
+	public Request(String name, String group) {
 		this.name = name;
+		this.group = group;
 	}
 
 	public Integer getId() {
@@ -41,4 +45,13 @@ public class Request {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
 }

@@ -32,6 +32,11 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
+	/* For Search */
+	@NotEmpty
+	@Column(name = "bgroup")
+	private String bgroup;
+
 	@Column(name = "active")
 	private boolean active;
 
@@ -47,7 +52,7 @@ public class User {
 
 	public User(@Email(message = "Please provide a valid email.") @NotEmpty String email,
 			@Length(min = 6, message = "Password must be at least 6 characters.") @NotEmpty String password,
-			@NotEmpty String firstName, @NotEmpty String lastName, boolean active, Set<Role> roles,
+			@NotEmpty String firstName, @NotEmpty String lastName, boolean active, Set<Role> roles, String bgroup,
 			UserProfile userProfile) {
 		this.email = email;
 		this.password = password;
@@ -55,6 +60,7 @@ public class User {
 		this.lastName = lastName;
 		this.active = active;
 		this.roles = roles;
+		this.bgroup = bgroup;
 		this.userProfile = userProfile;
 	}
 
@@ -116,6 +122,14 @@ public class User {
 
 	public UserProfile getUserProfile() {
 		return userProfile;
+	}
+
+	public String getBgroup() {
+		return bgroup;
+	}
+
+	public void setBgroup(String bgroup) {
+		this.bgroup = bgroup;
 	}
 
 	public void setUserProfile(UserProfile userProfile) {
