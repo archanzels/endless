@@ -39,6 +39,7 @@ public class User {
 
 	/* For Location */
 	@Column(name = "location")
+	@NotEmpty
 	private String location;
 
 	@Column(name = "lat")

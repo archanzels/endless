@@ -1,13 +1,15 @@
 package com.suman.endless.service;
 
-import com.suman.endless.model.User;
-
 import java.util.List;
 
+import com.suman.endless.model.User;
+
 public interface UserService {
-    User findUserByEmail(String email);
+	User findUserByEmail(String email);
 
-    void saveUser(User user);
+	void saveUser(User user, String location);
 
-    List<User> getAllUser();
+	List<User> getAllUser();
+
+	void deleteById(Integer id);
 }

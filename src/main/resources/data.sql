@@ -45,4 +45,6 @@ values(5003,'Suyoj','Tamrakar','B-','Mahabauddha','2018-07-13','2018-07-13');
 insert into request(request_id,first_name,last_name,bgroup,address,posted_date,required_date)
 values(5004,'Surya','Khanal','O-','Butwal','2018-07-12','2018-07-13');
 
+
+insert into message(message_id,message,sender_email,sender_name)
 values(6001,'ABC DEF','abac@email.com','Lorem Ipsum')

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.suman.endless.model.Message;
@@ -29,8 +30,14 @@ public class MainController {
 
 	@GetMapping({ "/", "/home" })
 	public ModelAndView index() {
+		Message m = new Message();
 		List<Request> requests = requestService.findAll();
-		return new ModelAndView("home", "requests", requests);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("requests", requests);
+		mv.addObject("message", m);
+		mv.setViewName("home");
+		return mv;
+		/*return new ModelAndView("home", "requests", requests);*/
 	}
 
 	@GetMapping("/why-donate")
@@ -55,7 +62,7 @@ public class MainController {
 	}
 
 	@PostMapping("/registration")
-	public ModelAndView createNewUser(@Valid User user, BindingResult br) {
+	public ModelAndView createNewUser(@Valid User user, BindingResult br, @RequestParam("location") String location) {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
@@ -64,7 +71,7 @@ public class MainController {
 		if (br.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
-			userService.saveUser(user);
+			userService.saveUser(user, location);
 			modelAndView.addObject("successMsg", "Successfully registered");
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");

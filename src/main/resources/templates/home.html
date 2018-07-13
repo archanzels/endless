@@ -76,24 +76,28 @@
 						</div>
 
 						<form role="form" id="contact-form" class="contact-form"
+							th:object="${message}" th:action="@{/message/postMessage}"
 							method="post">
 							<div class="row">
 								<div class="form-group">
 									<input type="text" class="form-control" name="Name"
-										autocomplete="off" id="Name" placeholder="Name">
+										autocomplete="off" id="Name" placeholder="Name"
+										th:field="${message.sender_name}">
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group">
 									<input type="text" class="form-control" name="Name"
-										autocomplete="off" id="email" placeholder="Email">
+										autocomplete="off" id="email" placeholder="Email"
+										th:field="${message.sender_email}">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group">
 									<textarea class="form-control textarea" rows="3" name="Message"
-										id="Message" placeholder="Message"></textarea>
+										id="Message" placeholder="Message"
+										th:field="${message.feedback}"></textarea>
 								</div>
 							</div>
 							<button type="submit" class="btn main-btn pull-right">Send

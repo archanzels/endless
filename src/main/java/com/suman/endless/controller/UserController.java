@@ -4,12 +4,14 @@ import com.suman.endless.model.User;
 import com.suman.endless.repository.UserRepository;
 import com.suman.endless.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.configurers.userdetails.UserDetailsServiceConfigurer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -48,10 +50,16 @@ public class UserController {
 		return new ModelAndView("request/request-form");
 	}
 
-	@PostMapping("/save/{id}")
-	public String save(@ModelAttribute("user") User theUser) {
-		userService.saveUser(theUser);
+	@PostMapping("/update/{id}")
+	public String save(@ModelAttribute("user") User theUser,@RequestParam("location") String location) {
+		userService.saveUser(theUser,location);
 		return "redirect:/admin/all";
 
+	}
+
+	@GetMapping("/delete/{id}")
+	public String deleteById(@PathVariable(name = "id") Integer id) {
+		userService.deleteById(id);
+		return "redirect:/admin/all";
 	}
 }
