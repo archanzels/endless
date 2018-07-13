@@ -2,9 +2,12 @@ package com.suman.endless.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,15 +41,22 @@ public class RequestController {
 		if (id != null) {
 			theModel.addAttribute("request", requestService.findOne(id));
 		} else {
-			theModel.addAttribute("request", new Request());
-
+			/* theModel.addAttribute("request", new Request()); */
+			Request request = new Request();
+			theModel.addAttribute("request", request);
 		}
 		return "/request/request-form";
 	}
 
-	@PostMapping("/editRequest")
-	public String requestEdit(Request request) {
-		requestService.saveRequest(request);
-		return "redirect:/request/all";
+	@PostMapping("/postRequest")
+	public ModelAndView requestEdit(@Valid Request request, BindingResult br) {
+		ModelAndView mv = new ModelAndView();
+		if (!br.hasErrors()) {
+			requestService.saveRequest(request);
+			return new ModelAndView("redirect:/request/all");
+		} else {
+			mv.setViewName("request/request-form");
+		}
+		return mv;
 	}
 }

@@ -38,11 +38,17 @@
 						<th>ID</th>
 						<th>Name</th>
 						<th>Required Blood</th>
+						<th>Address</th>
+						<th>Posted Date</th>
+						<th>Required Date</th>
 					</tr>
 					<tr th:each="request : ${requests}">
 						<td th:text="${request.id}"></td>
-						<td th:text="${request.name}"></td>
+						<td th:text="${request.firstName} +' '+ ${request.lastName}"></td>
 						<td th:text="${request.group}"></td>
+						<td th:text="${request.address}"></td>
+						<td th:text="${request.postedDate}"></td>
+						<td th:text="${#dates.format(request.requiredDate,'yyyy-MM-dd')}"></td>
 						<td sec:authorize="hasAuthority('ADMIN')"><a
 							th:href="@{'/request/editRequest/'+${request.id}}"
 							class="btn btn-primary a-btn-slide-text"> <span

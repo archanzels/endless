@@ -13,6 +13,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--CSS for public pages -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/homepage.css}" />
+<style>
+.left {
+	text-align: left;
+}
+</style>
 </head>
 
 <body>
@@ -34,26 +39,8 @@
 			<br>
 			<hr>
 			<div class="row">
-				<div class="col-sm-4 col-xs-6 tab"
-					style="background-color: #8e8e8e; color: white;">
-					<div class="page-header">
-						<h3>Blood Donation News &amp; Events</h3>
-					</div>
-					<ul style="text-align: left;">
-						<li><a
-							href="https://www.tapinto.net/towns/roxbury/sections/health-and-wellness/articles/red-cross-calls-for-summer-blood-donations-to-pre-15">Red
-								Cross Calls for Summer Blood Donations</a></li>
-						<li><a
-							href="http://www.believerschurch.com/2017/06/blood-donation-camp-held-diocese-pokhara/">
-								Blood Donation Camp Held in Diocese of Pokhara</a></li>
-						<li><a
-							href="https://thehimalayantimes.com/nepal/increasing-heat-leads-to-blood-shortage-in-chitwan/">Increasing
-								heat leads to blood shortage in Chitwan</a></li>
-					</ul>
-				</div>
-
 				<!--Blood Requests Tab  -->
-				<div class="col-sm-4 col-xs-6 tab"
+				<div class="col-sm-8 col-xs-6 tab"
 					style="background-color: #bf360c; color: white;">
 					<div class="page-header">
 						<h3>Blood Requests</h3>
@@ -61,14 +48,21 @@
 					<div class="table-responsive">
 						<table class="table">
 							<tr>
-								<th>ID</th>
 								<th>Name</th>
 								<th>Type</th>
+								<th>Address</th>
+								<th>Posted Date</th>
+								<th>Required Date</th>
 							</tr>
 							<tr th:each="request : ${requests}">
-								<td th:text="${request.id}" style="text-align: left;"></td>
-								<td th:text="${request.name}" style="text-align: left;"></td>
-								<td th:text="${request.group}" style="text-align: left;"></td>
+								<td th:text="${request.firstName} +' '+ ${request.lastName}"
+									class="left"></td>
+								<td th:text="${request.group}" class="left"></td>
+								<td th:text="${request.address}" class="left"></td>
+								<td th:text="${request.postedDate}" class="left"></td>
+								<td
+									th:text="${#dates.format(request.requiredDate,'yyyy-MM-dd')}"
+									class="left"></td>
 							</tr>
 						</table>
 					</div>

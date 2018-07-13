@@ -33,19 +33,26 @@
 						</div>
 					</div>
 
-					<form class="form-horizontal" th:object="${request}" method="post">
+					<form class="form-horizontal" th:object="${request}" method="post"
+						th:action="@{/request/postRequest}">
 						<div class="box-body">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">First Name</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" th:field="*{name}">
+									<input type="text" class="form-control" th:field="*{firstName}"
+										placeholder="First Name"> <label
+										th:if="${#fields.hasErrors('firstName')}"
+										th:errors="*{firstName}" class="validation-message"> </label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Last Name</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" th:field="*{name}">
+									<input type="text" class="form-control" th:field="*{lastName}"
+										placeholder="Last Name"> <label
+										th:if="${#fields.hasErrors('lastName')}"
+										th:errors="*{lastName}" class="validation-message"> </label>
 								</div>
 							</div>
 
@@ -54,6 +61,7 @@
 								<label class="col-sm-3 control-label">Blood Group</label>
 								<div class="col-sm-9">
 									<select class="form-control" id="sel1" th:field="*{group}">
+										<option value="" disabled>Select a blood group</option>
 										<option value="A+">A+</option>
 										<option value="A-">A-</option>
 										<option value="B+">B+</option>
@@ -69,7 +77,21 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Address</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" th:field="*{address}"
+										placeholder="Eg. Maitighar, Kathmandu"> <label
+										th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+										class="validation-message"> </label>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Required Date</label>
+								<div class="col-sm-9">
+									<input type="date" class="form-control"
+										th:field="*{requiredDate}"> <label
+										th:if="${#fields.hasErrors('requiredDate')}"
+										th:errors="*{requiredDate}" class="validation-message">
+									</label>
 								</div>
 							</div>
 						</div>
@@ -78,7 +100,7 @@
 						<div class="alert alert-danger">Please fill out all the
 							fields.</div>
 						<div class="box-footer">
-							<button type="submit" class="btn btn-default">Cancel</button>
+							<button type="clear" class="btn btn-default">Cancel</button>
 							<button type="submit" class="btn btn-info pull-right">Update
 							</button>
 						</div>

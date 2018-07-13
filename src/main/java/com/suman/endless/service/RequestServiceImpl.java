@@ -1,5 +1,6 @@
 package com.suman.endless.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public void saveRequest(Request request) {
+		Date date = new Date();
+		request.setPostedDate(date);
 		requestRepository.save(request);
 	}
 
