@@ -26,6 +26,12 @@ spring:
 server:
   port: 8000
 
+google:
+   map:   
+      api:
+         endpoint: https4://maps.googleapis.com/maps/api/geocode/xml?
+         key: AIzaSyBXTvljqELfjPalHuT5PHDk-qz5xnIw3VI
+
 ---
 
 #spring production profile
