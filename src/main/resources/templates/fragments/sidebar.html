@@ -18,19 +18,6 @@
 					<p th:utext="${userEmail}"></p>
 				</div>
 			</div>
-			<!-- search form
-			<form action="#" method="get" class="sidebar-form">
-				<div class="input-group">
-					<input type="text" name="q" class="form-control"
-						placeholder="Search..."> <span class="input-group-btn">
-						<button type="submit" name="search" id="search-btn"
-							class="btn btn-flat">
-							<i class="fa fa-search"></i>
-						</button>
-					</span>
-				</div>
-			</form>
-			-->
 			<!-- /.search form -->
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" data-widget="tree">
@@ -53,16 +40,15 @@
 					</span> </a></li>
 
 				<!--Search  -->
-				<li><a th:href="@{/search/form}"><i
-						class="class="fa fa-search""></i> <span>Search</span> <span
-						class="pull-right-container"> <small
+				<li><a th:href="@{/search/form}"><i class="fa fa-search"></i>
+						<span>Search</span> <span class="pull-right-container"> <small
 							class="label pull-right bg-red"></small>
 					</span> </a></li>
 				<!--All Requests  -->
 				<li><a th:href="@{/request/all}"><i
-						class="fas fa-align-justify"></i> <span>Requests</span> <span
+						class="fas fa-align-justify"></i> <span>Requests</span><span
 						class="pull-right-container"> <small
-							class="label pull-right bg-red">2+</small>
+							class="label pull-right bg-green">new</small>
 					</span> </a></li>
 			</ul>
 		</section>

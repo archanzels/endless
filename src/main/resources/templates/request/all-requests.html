@@ -18,6 +18,10 @@
 		<div class="content-wrapper">
 			<section class="content-header">
 				<h1>All Requests</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">All Request</li>
+				</ol>
 			</section>
 			<hr />
 			<div class="container-fluid">
@@ -25,9 +29,6 @@
 					<a th:href="@{/request/editRequest}"
 						class="btn btn-primary a-btn-slide-text"> <span
 						class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span><strong>New</strong></span></a>
-					<a href="#" class="btn btn-primary a-btn-slide-text"> <span
-						class="glyphicon glyphicon-upload" aria-hidden="true"></span> <span><strong>Upload</strong></span></a>
-
 				</div>
 			</div>
 
@@ -36,11 +37,14 @@
 					<tr>
 						<th>ID</th>
 						<th>Name</th>
+						<th>Required Blood</th>
 					</tr>
 					<tr th:each="request : ${requests}">
 						<td th:text="${request.id}"></td>
 						<td th:text="${request.name}"></td>
-						<td><a th:href="@{'/request/editRequest/'+${request.id}}"
+						<td th:text="${request.group}"></td>
+						<td sec:authorize="hasAuthority('ADMIN')"><a
+							th:href="@{'/request/editRequest/'+${request.id}}"
 							class="btn btn-primary a-btn-slide-text"> <span
 								class="glyphicon glyphicon-edit" aria-hidden="true"></span> <span><strong>Edit</strong></span></a>
 							<a th:href="@{'/request/delete/'+${request.id}}"

@@ -37,6 +37,19 @@ public class User {
 	@Column(name = "bgroup")
 	private String bgroup;
 
+	/* For Location */
+	@Column(name = "location")
+	private String location;
+
+	@Column(name = "lat")
+	private double lat;
+
+	@Column(name = "lng")
+	private double lng;
+
+	@Column(name = "dist")
+	private float dist;
+
 	@Column(name = "active")
 	private boolean active;
 
@@ -53,7 +66,7 @@ public class User {
 	public User(@Email(message = "Please provide a valid email.") @NotEmpty String email,
 			@Length(min = 6, message = "Password must be at least 6 characters.") @NotEmpty String password,
 			@NotEmpty String firstName, @NotEmpty String lastName, boolean active, Set<Role> roles, String bgroup,
-			UserProfile userProfile) {
+			String location, double lat, double lng, float dist, UserProfile userProfile) {
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
@@ -61,6 +74,10 @@ public class User {
 		this.active = active;
 		this.roles = roles;
 		this.bgroup = bgroup;
+		this.location = location;
+		this.lat = lat;
+		this.lng = lng;
+		this.dist = dist;
 		this.userProfile = userProfile;
 	}
 
@@ -130,6 +147,38 @@ public class User {
 
 	public void setBgroup(String bgroup) {
 		this.bgroup = bgroup;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
+	public double getDist() {
+		return dist;
+	}
+
+	public void setDist(float dist) {
+		this.dist = dist;
 	}
 
 	public void setUserProfile(UserProfile userProfile) {
